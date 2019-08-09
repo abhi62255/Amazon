@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="XKARTModelStoreContainer" CdmEntityContainer="XKARTEntities">
+    <EntitySetMapping Name="ADDRESSes">
+      <EntityTypeMapping TypeName="XKARTModel.ADDRESS">
+        <MappingFragment StoreEntitySet="ADDRESS">
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADMINs">
+      <EntityTypeMapping TypeName="XKARTModel.ADMIN">
+        <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CITies">
+      <EntityTypeMapping TypeName="XKARTModel.CITY">
+        <MappingFragment StoreEntitySet="CITY">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="City1" ColumnName="City" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="XKARTModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FEEDBACKs">
+      <EntityTypeMapping TypeName="XKARTModel.FEEDBACK">
+        <MappingFragment StoreEntitySet="FEEDBACK">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="Purchased" ColumnName="Purchased" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KARTs">
+      <EntityTypeMapping TypeName="XKARTModel.KART">
+        <MappingFragment StoreEntitySet="KART">
+          <ScalarProperty Name="KartId" ColumnName="KartId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERHISTORies">
+      <EntityTypeMapping TypeName="XKARTModel.ORDERHISTORY">
+        <MappingFragment StoreEntitySet="ORDERHISTORY">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERPLACEDs">
+      <EntityTypeMapping TypeName="XKARTModel.ORDERPLACED">
+        <MappingFragment StoreEntitySet="ORDERPLACED">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PREVISITs">
+      <EntityTypeMapping TypeName="XKARTModel.PREVISIT">
+        <MappingFragment StoreEntitySet="PREVISIT">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="PreVisitDate" ColumnName="PreVisitDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTs">
+      <EntityTypeMapping TypeName="XKARTModel.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCT">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductDiscount" ColumnName="ProductDiscount" />
+          <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+          <ScalarProperty Name="ProductSellerId" ColumnName="ProductSellerId" />
+          <ScalarProperty Name="ProductDescriptionId" ColumnName="ProductDescriptionId" />
+          <ScalarProperty Name="ProductPictureId" ColumnName="ProductPictureId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTDESCRIPTIONs">
+      <EntityTypeMapping TypeName="XKARTModel.PRODUCTDESCRIPTION">
+        <MappingFragment StoreEntitySet="PRODUCTDESCRIPTION">
+          <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
+          <ScalarProperty Name="ProductGenderType" ColumnName="ProductGenderType" />
+          <ScalarProperty Name="ProductBrand" ColumnName="ProductBrand" />
+          <ScalarProperty Name="ProductSubCategory" ColumnName="ProductSubCategory" />
+          <ScalarProperty Name="ProductDescription1" ColumnName="ProductDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTPICTUREs">
+      <EntityTypeMapping TypeName="XKARTModel.PRODUCTPICTURE">
+        <MappingFragment StoreEntitySet="PRODUCTPICTURE">
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="PicturePath" ColumnName="PicturePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEARCHISTORies">
+      <EntityTypeMapping TypeName="XKARTModel.SEARCHISTORY">
+        <MappingFragment StoreEntitySet="SEARCHISTORY">
+          <ScalarProperty Name="SearchId" ColumnName="SearchId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="SearchTag" ColumnName="SearchTag" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SELLERs">
+      <EntityTypeMapping TypeName="XKARTModel.SELLER">
+        <MappingFragment StoreEntitySet="SELLER">
+          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+          <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+          <ScalarProperty Name="SellerAddressId" ColumnName="SellerAddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATEs">
+      <EntityTypeMapping TypeName="XKARTModel.STATE">
+        <MappingFragment StoreEntitySet="STATE">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="State1" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="XKARTModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRENDS">
+      <EntityTypeMapping TypeName="XKARTModel.TREND">
+        <MappingFragment StoreEntitySet="TRENDS">
+          <ScalarProperty Name="TrendId" ColumnName="TrendId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="WISHLIST" TypeName="XKARTModel.WISHLIST" StoreEntitySet="WISHLIST">
+      <EndProperty Name="CUSTOMER">
+        <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+      </EndProperty>
+      <EndProperty Name="PRODUCT">
+        <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

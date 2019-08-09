@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="XKARTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADDRESS">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressLine1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="Int64" Nullable="false" />
+    <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerId" Type="Int64" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_ADDRESS_CUSTOMER" FromRole="ADDRESS" ToRole="CUSTOMER" />
+    <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_ADDRESS" FromRole="ADDRESS" ToRole="CUSTOMER" />
+    <NavigationProperty Name="ORDERHISTORies" Relationship="Self.FK_ORDERHISTORY_ORDERPLACED" FromRole="ADDRESS" ToRole="ORDERHISTORY" />
+    <NavigationProperty Name="ORDERPLACEDs" Relationship="Self.FK_ORDERPLACED_ADDRESS" FromRole="ADDRESS" ToRole="ORDERPLACED" />
+    <NavigationProperty Name="SELLERs" Relationship="Self.FK_SELLER_ADDRESS" FromRole="ADDRESS" ToRole="SELLER" />
+  </EntityType>
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CITY">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StateId" Type="Int32" />
+    <NavigationProperty Name="STATE" Relationship="Self.FK_CITY_STATE" FromRole="CITY" ToRole="STATE" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AddressId" Type="Int64" />
+    <Property Name="Question" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ADDRESSes" Relationship="Self.FK_ADDRESS_CUSTOMER" FromRole="CUSTOMER" ToRole="ADDRESS" />
+    <NavigationProperty Name="ADDRESS" Relationship="Self.FK_CUSTOMER_ADDRESS" FromRole="CUSTOMER" ToRole="ADDRESS" />
+    <NavigationProperty Name="FEEDBACKs" Relationship="Self.FK_FEEDBACK_CUSTOMER" FromRole="CUSTOMER" ToRole="FEEDBACK" />
+    <NavigationProperty Name="KARTs" Relationship="Self.FK_KART_CUSTOMER" FromRole="CUSTOMER" ToRole="KART" />
+    <NavigationProperty Name="ORDERPLACEDs" Relationship="Self.FK_ORDERPLACED_CUSTOMER" FromRole="CUSTOMER" ToRole="ORDERPLACED" />
+    <NavigationProperty Name="PREVISITs" Relationship="Self.FK_PREVISIT_CUSTOMER" FromRole="CUSTOMER" ToRole="PREVISIT" />
+    <NavigationProperty Name="SEARCHISTORies" Relationship="Self.FK_SEARCHHISTORY_CUSTOMER" FromRole="CUSTOMER" ToRole="SEARCHISTORY" />
+    <NavigationProperty Name="PRODUCTs" Relationship="Self.WISHLIST" FromRole="CUSTOMER" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="FEEDBACK">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="Review" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Purchased" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_FEEDBACK_CUSTOMER" FromRole="FEEDBACK" ToRole="CUSTOMER" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_FEEDBACK_PRODUCT" FromRole="FEEDBACK" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="KART">
+    <Key>
+      <PropertyRef Name="KartId" />
+    </Key>
+    <Property Name="KartId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_KART_CUSTOMER" FromRole="KART" ToRole="CUSTOMER" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_KART_PRODUCT" FromRole="KART" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="ORDERHISTORY">
+    <Key>
+      <PropertyRef Name="OrderId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="OrderId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="Int64" Nullable="false" />
+    <Property Name="Amount" Type="Int64" Nullable="false" />
+    <Property Name="AddressId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="ADDRESS" Relationship="Self.FK_ORDERHISTORY_ORDERPLACED" FromRole="ORDERHISTORY" ToRole="ADDRESS" />
+    <NavigationProperty Name="ORDERPLACED" Relationship="Self.FK_ORDERHISTORY_ORDERPLACE_PRODUCT" FromRole="ORDERHISTORY" ToRole="ORDERPLACED" />
+  </EntityType>
+  <EntityType Name="ORDERPLACED">
+    <Key>
+      <PropertyRef Name="OrderId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="OrderId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="Int64" Nullable="false" />
+    <Property Name="Amount" Type="Int64" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PaymentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressId" Type="Int64" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Discount" Type="Int32" />
+    <NavigationProperty Name="ADDRESS" Relationship="Self.FK_ORDERPLACED_ADDRESS" FromRole="ORDERPLACED" ToRole="ADDRESS" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_ORDERPLACED_CUSTOMER" FromRole="ORDERPLACED" ToRole="CUSTOMER" />
+    <NavigationProperty Name="ORDERHISTORY" Relationship="Self.FK_ORDERHISTORY_ORDERPLACE_PRODUCT" FromRole="ORDERPLACED" ToRole="ORDERHISTORY" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_ORDERPLACED_PRODUCT" FromRole="ORDERPLACED" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="PREVISIT">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="PreVisitDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_PREVISIT_CUSTOMER" FromRole="PREVISIT" ToRole="CUSTOMER" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_PREVISIT_PRODUCT" FromRole="PREVISIT" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductPrice" Type="Int64" Nullable="false" />
+    <Property Name="ProductDiscount" Type="Int32" />
+    <Property Name="ProductQuantity" Type="Int64" Nullable="false" />
+    <Property Name="ProductSellerId" Type="Int64" />
+    <Property Name="ProductDescriptionId" Type="Int64" />
+    <Property Name="ProductPictureId" Type="Int64" />
+    <NavigationProperty Name="FEEDBACKs" Relationship="Self.FK_FEEDBACK_PRODUCT" FromRole="PRODUCT" ToRole="FEEDBACK" />
+    <NavigationProperty Name="KARTs" Relationship="Self.FK_KART_PRODUCT" FromRole="PRODUCT" ToRole="KART" />
+    <NavigationProperty Name="ORDERPLACEDs" Relationship="Self.FK_ORDERPLACED_PRODUCT" FromRole="PRODUCT" ToRole="ORDERPLACED" />
+    <NavigationProperty Name="PREVISITs" Relationship="Self.FK_PREVISIT_PRODUCT" FromRole="PRODUCT" ToRole="PREVISIT" />
+    <NavigationProperty Name="PRODUCTDESCRIPTION" Relationship="Self.FK_PRODUCT_DESCRPTION" FromRole="PRODUCT" ToRole="PRODUCTDESCRIPTION" />
+    <NavigationProperty Name="PRODUCTPICTURE" Relationship="Self.FK_PRODUCT_PRODUCTPICTURE" FromRole="PRODUCT" ToRole="PRODUCTPICTURE" />
+    <NavigationProperty Name="SELLER" Relationship="Self.FK_PRODUCT_SELLER" FromRole="PRODUCT" ToRole="SELLER" />
+    <NavigationProperty Name="PRODUCTDESCRIPTIONs" Relationship="Self.FK_PRODUCTDESCRIPTION_PRODUCT" FromRole="PRODUCT" ToRole="PRODUCTDESCRIPTION" />
+    <NavigationProperty Name="PRODUCTPICTUREs" Relationship="Self.FK_PRODUCTPICTURE_PRODUCT" FromRole="PRODUCT" ToRole="PRODUCTPICTURE" />
+    <NavigationProperty Name="TRENDS" Relationship="Self.FK_TRENDS_PRODUCT" FromRole="PRODUCT" ToRole="TRENDS" />
+    <NavigationProperty Name="CUSTOMERs" Relationship="Self.WISHLIST" FromRole="PRODUCT" ToRole="CUSTOMER" />
+  </EntityType>
+  <EntityType Name="PRODUCTDESCRIPTION">
+    <Key>
+      <PropertyRef Name="DescriptionId" />
+    </Key>
+    <Property Name="DescriptionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="ProductCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProductGenderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductBrand" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProductDescription1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_DESCRPTION" FromRole="PRODUCTDESCRIPTION" ToRole="PRODUCT" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_PRODUCTDESCRIPTION_PRODUCT" FromRole="PRODUCTDESCRIPTION" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="PRODUCTPICTURE">
+    <Key>
+      <PropertyRef Name="PictureId" />
+    </Key>
+    <Property Name="PictureId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="PicturePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_PRODUCTPICTURE" FromRole="PRODUCTPICTURE" ToRole="PRODUCT" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_PRODUCTPICTURE_PRODUCT" FromRole="PRODUCTPICTURE" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="SEARCHISTORY">
+    <Key>
+      <PropertyRef Name="SearchId" />
+    </Key>
+    <Property Name="SearchId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="SearchTag" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SEARCHHISTORY_CUSTOMER" FromRole="SEARCHISTORY" ToRole="CUSTOMER" />
+  </EntityType>
+  <EntityType Name="SELLER">
+    <Key>
+      <PropertyRef Name="SellerId" />
+    </Key>
+    <Property Name="SellerId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SellerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SellerAddressId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="ADDRESS" Relationship="Self.FK_SELLER_ADDRESS" FromRole="SELLER" ToRole="ADDRESS" />
+    <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_SELLER" FromRole="SELLER" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="STATE">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="State1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CITies" Relationship="Self.FK_CITY_STATE" FromRole="STATE" ToRole="CITY" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TREND">
+    <Key>
+      <PropertyRef Name="TrendId" />
+    </Key>
+    <Property Name="TrendId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_TRENDS_PRODUCT" FromRole="TRENDS" ToRole="PRODUCT" />
+  </EntityType>
+  <Association Name="FK_ADDRESS_CUSTOMER">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+    <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="ADDRESS">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUSTOMER_ADDRESS">
+    <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="0..1" />
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADDRESS">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="CUSTOMER">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERHISTORY_ORDERPLACED">
+    <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+    <End Role="ORDERHISTORY" Type="Self.ORDERHISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADDRESS">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="ORDERHISTORY">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERPLACED_ADDRESS">
+    <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+    <End Role="ORDERPLACED" Type="Self.ORDERPLACED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADDRESS">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="ORDERPLACED">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SELLER_ADDRESS">
+    <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+    <End Role="SELLER" Type="Self.SELLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADDRESS">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="SELLER">
+        <PropertyRef Name="SellerAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITY_STATE">
+    <End Role="STATE" Type="Self.STATE" Multiplicity="0..1" />
+    <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATE">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="CITY">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FEEDBACK_CUSTOMER">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="FEEDBACK" Type="Self.FEEDBACK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="FEEDBACK">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KART_CUSTOMER">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="KART" Type="Self.KART" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="KART">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERPLACED_CUSTOMER">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="ORDERPLACED" Type="Self.ORDERPLACED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="ORDERPLACED">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PREVISIT_CUSTOMER">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="PREVISIT" Type="Self.PREVISIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="PREVISIT">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEARCHHISTORY_CUSTOMER">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="SEARCHISTORY" Type="Self.SEARCHISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="SEARCHISTORY">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FEEDBACK_PRODUCT">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="FEEDBACK" Type="Self.FEEDBACK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="FEEDBACK">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KART_PRODUCT">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="KART" Type="Self.KART" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="KART">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERHISTORY_ORDERPLACE_PRODUCT">
+    <End Role="ORDERPLACED" Type="Self.ORDERPLACED" Multiplicity="1" />
+    <End Role="ORDERHISTORY" Type="Self.ORDERHISTORY" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ORDERPLACED">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ORDERHISTORY">
+        <PropertyRef Name="OrderId" />
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERPLACED_PRODUCT">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="ORDERPLACED" Type="Self.ORDERPLACED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ORDERPLACED">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PREVISIT_PRODUCT">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="PREVISIT" Type="Self.PREVISIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="PREVISIT">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_DESCRPTION">
+    <End Role="PRODUCTDESCRIPTION" Type="Self.PRODUCTDESCRIPTION" Multiplicity="0..1" />
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTDESCRIPTION">
+        <PropertyRef Name="DescriptionId" />
+      </Principal>
+      <Dependent Role="PRODUCT">
+        <PropertyRef Name="ProductDescriptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_PRODUCTPICTURE">
+    <End Role="PRODUCTPICTURE" Type="Self.PRODUCTPICTURE" Multiplicity="0..1" />
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTPICTURE">
+        <PropertyRef Name="PictureId" />
+      </Principal>
+      <Dependent Role="PRODUCT">
+        <PropertyRef Name="ProductPictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_SELLER">
+    <End Role="SELLER" Type="Self.SELLER" Multiplicity="0..1" />
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SELLER">
+        <PropertyRef Name="SellerId" />
+      </Principal>
+      <Dependent Role="PRODUCT">
+        <PropertyRef Name="ProductSellerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTDESCRIPTION_PRODUCT">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="PRODUCTDESCRIPTION" Type="Self.PRODUCTDESCRIPTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="PRODUCTDESCRIPTION">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTPICTURE_PRODUCT">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="PRODUCTPICTURE" Type="Self.PRODUCTPICTURE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="PRODUCTPICTURE">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRENDS_PRODUCT">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="TRENDS" Type="Self.TREND" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="TRENDS">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WISHLIST">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="XKARTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADDRESSes" EntityType="Self.ADDRESS" />
+    <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
+    <EntitySet Name="CITies" EntityType="Self.CITY" />
+    <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+    <EntitySet Name="FEEDBACKs" EntityType="Self.FEEDBACK" />
+    <EntitySet Name="KARTs" EntityType="Self.KART" />
+    <EntitySet Name="ORDERHISTORies" EntityType="Self.ORDERHISTORY" />
+    <EntitySet Name="ORDERPLACEDs" EntityType="Self.ORDERPLACED" />
+    <EntitySet Name="PREVISITs" EntityType="Self.PREVISIT" />
+    <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+    <EntitySet Name="PRODUCTDESCRIPTIONs" EntityType="Self.PRODUCTDESCRIPTION" />
+    <EntitySet Name="PRODUCTPICTUREs" EntityType="Self.PRODUCTPICTURE" />
+    <EntitySet Name="SEARCHISTORies" EntityType="Self.SEARCHISTORY" />
+    <EntitySet Name="SELLERs" EntityType="Self.SELLER" />
+    <EntitySet Name="STATEs" EntityType="Self.STATE" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TRENDS" EntityType="Self.TREND" />
+    <AssociationSet Name="FK_ADDRESS_CUSTOMER" Association="Self.FK_ADDRESS_CUSTOMER">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="ADDRESS" EntitySet="ADDRESSes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUSTOMER_ADDRESS" Association="Self.FK_CUSTOMER_ADDRESS">
+      <End Role="ADDRESS" EntitySet="ADDRESSes" />
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERHISTORY_ORDERPLACED" Association="Self.FK_ORDERHISTORY_ORDERPLACED">
+      <End Role="ADDRESS" EntitySet="ADDRESSes" />
+      <End Role="ORDERHISTORY" EntitySet="ORDERHISTORies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERPLACED_ADDRESS" Association="Self.FK_ORDERPLACED_ADDRESS">
+      <End Role="ADDRESS" EntitySet="ADDRESSes" />
+      <End Role="ORDERPLACED" EntitySet="ORDERPLACEDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SELLER_ADDRESS" Association="Self.FK_SELLER_ADDRESS">
+      <End Role="ADDRESS" EntitySet="ADDRESSes" />
+      <End Role="SELLER" EntitySet="SELLERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITY_STATE" Association="Self.FK_CITY_STATE">
+      <End Role="STATE" EntitySet="STATEs" />
+      <End Role="CITY" EntitySet="CITies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FEEDBACK_CUSTOMER" Association="Self.FK_FEEDBACK_CUSTOMER">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="FEEDBACK" EntitySet="FEEDBACKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KART_CUSTOMER" Association="Self.FK_KART_CUSTOMER">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="KART" EntitySet="KARTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERPLACED_CUSTOMER" Association="Self.FK_ORDERPLACED_CUSTOMER">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="ORDERPLACED" EntitySet="ORDERPLACEDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PREVISIT_CUSTOMER" Association="Self.FK_PREVISIT_CUSTOMER">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="PREVISIT" EntitySet="PREVISITs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEARCHHISTORY_CUSTOMER" Association="Self.FK_SEARCHHISTORY_CUSTOMER">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="SEARCHISTORY" EntitySet="SEARCHISTORies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FEEDBACK_PRODUCT" Association="Self.FK_FEEDBACK_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="FEEDBACK" EntitySet="FEEDBACKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KART_PRODUCT" Association="Self.FK_KART_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="KART" EntitySet="KARTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERHISTORY_ORDERPLACE_PRODUCT" Association="Self.FK_ORDERHISTORY_ORDERPLACE_PRODUCT">
+      <End Role="ORDERPLACED" EntitySet="ORDERPLACEDs" />
+      <End Role="ORDERHISTORY" EntitySet="ORDERHISTORies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERPLACED_PRODUCT" Association="Self.FK_ORDERPLACED_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="ORDERPLACED" EntitySet="ORDERPLACEDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PREVISIT_PRODUCT" Association="Self.FK_PREVISIT_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="PREVISIT" EntitySet="PREVISITs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_DESCRPTION" Association="Self.FK_PRODUCT_DESCRPTION">
+      <End Role="PRODUCTDESCRIPTION" EntitySet="PRODUCTDESCRIPTIONs" />
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_PRODUCTPICTURE" Association="Self.FK_PRODUCT_PRODUCTPICTURE">
+      <End Role="PRODUCTPICTURE" EntitySet="PRODUCTPICTUREs" />
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_SELLER" Association="Self.FK_PRODUCT_SELLER">
+      <End Role="SELLER" EntitySet="SELLERs" />
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTDESCRIPTION_PRODUCT" Association="Self.FK_PRODUCTDESCRIPTION_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="PRODUCTDESCRIPTION" EntitySet="PRODUCTDESCRIPTIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTPICTURE_PRODUCT" Association="Self.FK_PRODUCTPICTURE_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="PRODUCTPICTURE" EntitySet="PRODUCTPICTUREs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRENDS_PRODUCT" Association="Self.FK_TRENDS_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="TRENDS" EntitySet="TRENDS" />
+    </AssociationSet>
+    <AssociationSet Name="WISHLIST" Association="Self.WISHLIST">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

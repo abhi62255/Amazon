@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8d5500db3ad04dfd97062bed1eaccbce" Name="Diagram1">
+        <EntityTypeShape EntityType="XKARTModel.ADDRESS" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.ADMIN" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.CITY" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.CUSTOMER" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.FEEDBACK" Width="1.5" PointX="9.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.KART" Width="1.5" PointX="9.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.ORDERHISTORY" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.ORDERPLACED" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.PREVISIT" Width="1.5" PointX="9.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.PRODUCT" Width="1.5" PointX="7.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.PRODUCTDESCRIPTION" Width="1.5" PointX="9.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.PRODUCTPICTURE" Width="1.5" PointX="9.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.SEARCHISTORY" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.SELLER" Width="1.5" PointX="5.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.STATE" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.sysdiagram" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XKARTModel.TREND" Width="1.5" PointX="9.75" PointY="29.125" IsExpanded="true" />
+        <AssociationConnector Association="XKARTModel.FK_ADDRESS_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_CUSTOMER_ADDRESS" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_ORDERHISTORY_ORDERPLACED" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_ORDERPLACED_ADDRESS" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_SELLER_ADDRESS" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_CITY_STATE" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_FEEDBACK_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_KART_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_ORDERPLACED_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_PREVISIT_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_SEARCHHISTORY_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_FEEDBACK_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_KART_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_ORDERHISTORY_ORDERPLACE_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_ORDERPLACED_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_PREVISIT_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_PRODUCT_DESCRPTION" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_PRODUCT_PRODUCTPICTURE" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_PRODUCT_SELLER" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_PRODUCTDESCRIPTION_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_PRODUCTPICTURE_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.FK_TRENDS_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="XKARTModel.WISHLIST" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
