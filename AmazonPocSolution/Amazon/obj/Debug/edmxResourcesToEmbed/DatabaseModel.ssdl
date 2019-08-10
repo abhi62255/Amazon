@@ -109,8 +109,6 @@
     <Property Name="ProductDiscount" Type="int" />
     <Property Name="ProductQuantity" Type="bigint" Nullable="false" />
     <Property Name="ProductSellerId" Type="bigint" />
-    <Property Name="ProductDescriptionId" Type="bigint" />
-    <Property Name="ProductPictureId" Type="bigint" />
   </EntityType>
   <EntityType Name="PRODUCTDESCRIPTION">
     <Key>
@@ -351,30 +349,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PRODUCT_DESCRPTION">
-    <End Role="PRODUCTDESCRIPTION" Type="Self.PRODUCTDESCRIPTION" Multiplicity="0..1" />
-    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PRODUCTDESCRIPTION">
-        <PropertyRef Name="DescriptionId" />
-      </Principal>
-      <Dependent Role="PRODUCT">
-        <PropertyRef Name="ProductDescriptionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PRODUCT_PRODUCTPICTURE">
-    <End Role="PRODUCTPICTURE" Type="Self.PRODUCTPICTURE" Multiplicity="0..1" />
-    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PRODUCTPICTURE">
-        <PropertyRef Name="PictureId" />
-      </Principal>
-      <Dependent Role="PRODUCT">
-        <PropertyRef Name="ProductPictureId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PRODUCT_SELLER">
     <End Role="SELLER" Type="Self.SELLER" Multiplicity="0..1" />
     <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
@@ -545,14 +519,6 @@
     <AssociationSet Name="FK_PREVISIT_PRODUCT" Association="Self.FK_PREVISIT_PRODUCT">
       <End Role="PRODUCT" EntitySet="PRODUCT" />
       <End Role="PREVISIT" EntitySet="PREVISIT" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PRODUCT_DESCRPTION" Association="Self.FK_PRODUCT_DESCRPTION">
-      <End Role="PRODUCTDESCRIPTION" EntitySet="PRODUCTDESCRIPTION" />
-      <End Role="PRODUCT" EntitySet="PRODUCT" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PRODUCT_PRODUCTPICTURE" Association="Self.FK_PRODUCT_PRODUCTPICTURE">
-      <End Role="PRODUCTPICTURE" EntitySet="PRODUCTPICTURE" />
-      <End Role="PRODUCT" EntitySet="PRODUCT" />
     </AssociationSet>
     <AssociationSet Name="FK_PRODUCT_SELLER" Association="Self.FK_PRODUCT_SELLER">
       <End Role="SELLER" EntitySet="SELLER" />

@@ -114,8 +114,6 @@
           <ScalarProperty Name="ProductDiscount" ColumnName="ProductDiscount" />
           <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
           <ScalarProperty Name="ProductSellerId" ColumnName="ProductSellerId" />
-          <ScalarProperty Name="ProductDescriptionId" ColumnName="ProductDescriptionId" />
-          <ScalarProperty Name="ProductPictureId" ColumnName="ProductPictureId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

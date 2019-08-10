@@ -11,25 +11,28 @@ namespace Amazon
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PRODUCTDESCRIPTION
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCTDESCRIPTION()
-        {
-            this.PRODUCTs = new HashSet<PRODUCT>();
-        }
-    
         public long DescriptionId { get; set; }
         public long ProductId { get; set; }
+
+        [Required]
         public string ProductCategory { get; set; }
+
+        [Required] 
         public string ProductGenderType { get; set; }
+
+        [Required]
         public string ProductBrand { get; set; }
+
+        [Required]
         public string ProductSubCategory { get; set; }
+
+        [Required]
         public string ProductDescription1 { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT> PRODUCTs { get; set; }
         public virtual PRODUCT PRODUCT { get; set; }
     }
 }

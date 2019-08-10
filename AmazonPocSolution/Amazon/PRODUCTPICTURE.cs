@@ -11,21 +11,16 @@ namespace Amazon
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PRODUCTPICTURE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCTPICTURE()
-        {
-            this.PRODUCTs = new HashSet<PRODUCT>();
-        }
-    
         public long PictureId { get; set; }
         public long ProductId { get; set; }
+
+        [Required]
         public string PicturePath { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT> PRODUCTs { get; set; }
         public virtual PRODUCT PRODUCT { get; set; }
     }
 }

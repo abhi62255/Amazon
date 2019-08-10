@@ -114,8 +114,6 @@
           <Property Name="ProductDiscount" Type="int" />
           <Property Name="ProductQuantity" Type="bigint" Nullable="false" />
           <Property Name="ProductSellerId" Type="bigint" />
-          <Property Name="ProductDescriptionId" Type="bigint" />
-          <Property Name="ProductPictureId" Type="bigint" />
         </EntityType>
         <EntityType Name="PRODUCTDESCRIPTION">
           <Key>
@@ -356,30 +354,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PRODUCT_DESCRPTION">
-          <End Role="PRODUCTDESCRIPTION" Type="Self.PRODUCTDESCRIPTION" Multiplicity="0..1" />
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTDESCRIPTION">
-              <PropertyRef Name="DescriptionId" />
-            </Principal>
-            <Dependent Role="PRODUCT">
-              <PropertyRef Name="ProductDescriptionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_PRODUCTPICTURE">
-          <End Role="PRODUCTPICTURE" Type="Self.PRODUCTPICTURE" Multiplicity="0..1" />
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTPICTURE">
-              <PropertyRef Name="PictureId" />
-            </Principal>
-            <Dependent Role="PRODUCT">
-              <PropertyRef Name="ProductPictureId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PRODUCT_SELLER">
           <End Role="SELLER" Type="Self.SELLER" Multiplicity="0..1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
@@ -550,14 +524,6 @@
           <AssociationSet Name="FK_PREVISIT_PRODUCT" Association="Self.FK_PREVISIT_PRODUCT">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="PREVISIT" EntitySet="PREVISIT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_DESCRPTION" Association="Self.FK_PRODUCT_DESCRPTION">
-            <End Role="PRODUCTDESCRIPTION" EntitySet="PRODUCTDESCRIPTION" />
-            <End Role="PRODUCT" EntitySet="PRODUCT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_PRODUCTPICTURE" Association="Self.FK_PRODUCT_PRODUCTPICTURE">
-            <End Role="PRODUCTPICTURE" EntitySet="PRODUCTPICTURE" />
-            <End Role="PRODUCT" EntitySet="PRODUCT" />
           </AssociationSet>
           <AssociationSet Name="FK_PRODUCT_SELLER" Association="Self.FK_PRODUCT_SELLER">
             <End Role="SELLER" EntitySet="SELLER" />
@@ -732,14 +698,10 @@
           <Property Name="ProductDiscount" Type="Int32" />
           <Property Name="ProductQuantity" Type="Int64" Nullable="false" />
           <Property Name="ProductSellerId" Type="Int64" />
-          <Property Name="ProductDescriptionId" Type="Int64" />
-          <Property Name="ProductPictureId" Type="Int64" />
           <NavigationProperty Name="FEEDBACKs" Relationship="Self.FK_FEEDBACK_PRODUCT" FromRole="PRODUCT" ToRole="FEEDBACK" />
           <NavigationProperty Name="KARTs" Relationship="Self.FK_KART_PRODUCT" FromRole="PRODUCT" ToRole="KART" />
           <NavigationProperty Name="ORDERPLACEDs" Relationship="Self.FK_ORDERPLACED_PRODUCT" FromRole="PRODUCT" ToRole="ORDERPLACED" />
           <NavigationProperty Name="PREVISITs" Relationship="Self.FK_PREVISIT_PRODUCT" FromRole="PRODUCT" ToRole="PREVISIT" />
-          <NavigationProperty Name="PRODUCTDESCRIPTION" Relationship="Self.FK_PRODUCT_DESCRPTION" FromRole="PRODUCT" ToRole="PRODUCTDESCRIPTION" />
-          <NavigationProperty Name="PRODUCTPICTURE" Relationship="Self.FK_PRODUCT_PRODUCTPICTURE" FromRole="PRODUCT" ToRole="PRODUCTPICTURE" />
           <NavigationProperty Name="SELLER" Relationship="Self.FK_PRODUCT_SELLER" FromRole="PRODUCT" ToRole="SELLER" />
           <NavigationProperty Name="PRODUCTDESCRIPTIONs" Relationship="Self.FK_PRODUCTDESCRIPTION_PRODUCT" FromRole="PRODUCT" ToRole="PRODUCTDESCRIPTION" />
           <NavigationProperty Name="PRODUCTPICTUREs" Relationship="Self.FK_PRODUCTPICTURE_PRODUCT" FromRole="PRODUCT" ToRole="PRODUCTPICTURE" />
@@ -757,7 +719,6 @@
           <Property Name="ProductBrand" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ProductSubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ProductDescription1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_DESCRPTION" FromRole="PRODUCTDESCRIPTION" ToRole="PRODUCT" />
           <NavigationProperty Name="PRODUCT" Relationship="Self.FK_PRODUCTDESCRIPTION_PRODUCT" FromRole="PRODUCTDESCRIPTION" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="PRODUCTPICTURE">
@@ -767,7 +728,6 @@
           <Property Name="PictureId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductId" Type="Int64" Nullable="false" />
           <Property Name="PicturePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_PRODUCTPICTURE" FromRole="PRODUCTPICTURE" ToRole="PRODUCT" />
           <NavigationProperty Name="PRODUCT" Relationship="Self.FK_PRODUCTPICTURE_PRODUCT" FromRole="PRODUCTPICTURE" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="SEARCHISTORY">
@@ -1010,30 +970,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PRODUCT_DESCRPTION">
-          <End Role="PRODUCTDESCRIPTION" Type="Self.PRODUCTDESCRIPTION" Multiplicity="0..1" />
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTDESCRIPTION">
-              <PropertyRef Name="DescriptionId" />
-            </Principal>
-            <Dependent Role="PRODUCT">
-              <PropertyRef Name="ProductDescriptionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_PRODUCTPICTURE">
-          <End Role="PRODUCTPICTURE" Type="Self.PRODUCTPICTURE" Multiplicity="0..1" />
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTPICTURE">
-              <PropertyRef Name="PictureId" />
-            </Principal>
-            <Dependent Role="PRODUCT">
-              <PropertyRef Name="ProductPictureId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PRODUCT_SELLER">
           <End Role="SELLER" Type="Self.SELLER" Multiplicity="0..1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
@@ -1167,14 +1103,6 @@
           <AssociationSet Name="FK_PREVISIT_PRODUCT" Association="Self.FK_PREVISIT_PRODUCT">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="PREVISIT" EntitySet="PREVISITs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_DESCRPTION" Association="Self.FK_PRODUCT_DESCRPTION">
-            <End Role="PRODUCTDESCRIPTION" EntitySet="PRODUCTDESCRIPTIONs" />
-            <End Role="PRODUCT" EntitySet="PRODUCTs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_PRODUCTPICTURE" Association="Self.FK_PRODUCT_PRODUCTPICTURE">
-            <End Role="PRODUCTPICTURE" EntitySet="PRODUCTPICTUREs" />
-            <End Role="PRODUCT" EntitySet="PRODUCTs" />
           </AssociationSet>
           <AssociationSet Name="FK_PRODUCT_SELLER" Association="Self.FK_PRODUCT_SELLER">
             <End Role="SELLER" EntitySet="SELLERs" />
@@ -1316,8 +1244,6 @@
                 <ScalarProperty Name="ProductDiscount" ColumnName="ProductDiscount" />
                 <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
                 <ScalarProperty Name="ProductSellerId" ColumnName="ProductSellerId" />
-                <ScalarProperty Name="ProductDescriptionId" ColumnName="ProductDescriptionId" />
-                <ScalarProperty Name="ProductPictureId" ColumnName="ProductPictureId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

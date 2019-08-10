@@ -11,7 +11,8 @@ namespace Amazon
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PRODUCT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,13 +29,21 @@ namespace Amazon
         }
     
         public long ProductId { get; set; }
+
+        [Required]
         public string ProductName { get; set; }
+
+        [Required]
         public long ProductPrice { get; set; }
+
+        [Required]
         public Nullable<int> ProductDiscount { get; set; }
+
+        [Required]
         public long ProductQuantity { get; set; }
+
+
         public Nullable<long> ProductSellerId { get; set; }
-        public Nullable<long> ProductDescriptionId { get; set; }
-        public Nullable<long> ProductPictureId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FEEDBACK> FEEDBACKs { get; set; }
@@ -44,8 +53,6 @@ namespace Amazon
         public virtual ICollection<ORDERPLACED> ORDERPLACEDs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PREVISIT> PREVISITs { get; set; }
-        public virtual PRODUCTDESCRIPTION PRODUCTDESCRIPTION { get; set; }
-        public virtual PRODUCTPICTURE PRODUCTPICTURE { get; set; }
         public virtual SELLER SELLER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCTDESCRIPTION> PRODUCTDESCRIPTIONs { get; set; }
