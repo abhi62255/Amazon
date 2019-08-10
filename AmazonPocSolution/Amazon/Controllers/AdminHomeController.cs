@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -115,6 +116,48 @@ namespace Amazon.Controllers
                 _db.PRODUCTPICTUREs.Add(model);
                 _db.SaveChanges();
                 return RedirectToAction("AddPicture", "AdminHome");
+            }
+            return View(model);
+        }
+
+
+
+
+
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(Amazon.Models.Password model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.OldPassword = Hashing.Hash(model.OldPassword);
+                model.NewPassword = Hashing.Hash(model.NewPassword);
+                model.ConfirmPassword = Hashing.Hash(model.ConfirmPassword);
+
+
+
+                var user = _db.ADMINs.Where(a => a.Username.Equals(User.Identity.Name) && a.Password.Equals(model.OldPassword)).FirstOrDefault();
+                if (user != null)
+                {
+                    user.Password = model.NewPassword;
+                    _db.Entry(user).State = EntityState.Modified;
+                    _db.SaveChanges();
+                    return RedirectToAction("Index", "AdminHome");
+                }
+                else
+                {
+                    ViewBag.message = "Wrong Old Password";
+                    return View();
+                }
+
+                //_db.ADMINs.Add(model);
+                //_db.SaveChanges();
+                //return RedirectToAction("Index", "AdminHome");
+                return Content("changed");
             }
             return View(model);
         }

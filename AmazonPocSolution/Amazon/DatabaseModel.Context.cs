@@ -42,5 +42,7 @@ namespace Amazon
         public virtual DbSet<STATE> STATEs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TREND> TRENDS { get; set; }
+
+        public System.Data.Entity.DbSet<Amazon.Models.Password> Passwords { get; set; }
     }
 }

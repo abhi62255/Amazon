@@ -32,7 +32,7 @@
                     }
                     else
                     {
-                        <li><span style=" color: white"> Welcome @User.Identity.Name</span></li>
+                        <span style="color : white "><li>@Html.ActionLink(" Welcome " + @User.Identity.Name, "ChangePassword", "AdminHome")</li></span>
                         <li>@Html.ActionLink("LogOut", "LogOut", "RegisterLogin")</li>
                     }
                 </ul>
@@ -43,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Amazon Dream</p>
             @{
                 ViewBag.Title = "Contact Information";
             }

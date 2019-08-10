@@ -3,8 +3,6 @@
     ViewBag.Title = "_LayoutAdmin";
 }
 
-<h2>_LayoutAdmin</h2>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,18 +21,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Amazon", "Index", "AdminHome", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "AdminHome")</li>
                     <li>@Html.ActionLink("Add Seller", "AddAddress", "AdminHome")</li>
                     <li>@Html.ActionLink("Add Product", "AddProduct", "AdminHome")</li>
 
                 </ul>
-                    <ul class="nav navbar-right">
+                <ul class="nav navbar-right">
+                    <span style="color : white "><li>@Html.ActionLink(" Welcome " + @User.Identity.Name, "ChangePassword", "AdminHome")</li></span>
                     <li>@Html.ActionLink("LogOut", "LogOut", "RegisterLogin")</li>
                 </ul>
             </div>
@@ -44,7 +41,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Amazon Dream</p>
         </footer>
     </div>
 

@@ -168,6 +168,7 @@
     <Compile Include="KART.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Password.cs" />
     <Compile Include="ORDERHISTORY.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -266,10 +267,10 @@
     <Content Include="Views\AdminHome\AddProduct.cshtml" />
     <Content Include="Views\AdminHome\AddDescription.cshtml" />
     <Content Include="Views\AdminHome\AddPicture.cshtml" />
+    <Content Include="Views\AdminHome\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
