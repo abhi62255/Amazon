@@ -21,21 +21,6 @@ namespace Amazon.Controllers
             return View(pRODUCTs.ToList());
         }
 
-        // GET: AdminProductView/Details/5
-        public ActionResult Details(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PRODUCT pRODUCT = db.PRODUCTs.Find(id);
-            if (pRODUCT == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pRODUCT);
-        }
-
 
         // GET: AdminProductView/Edit/5
         public ActionResult Edit(long? id)
@@ -90,18 +75,26 @@ namespace Amazon.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            PRODUCT pRODUCT = db.PRODUCTs.Find(id);
-            PRODUCTDESCRIPTION pRODUCTDESCRIPTION = db.PRODUCTDESCRIPTIONs.Where(d => d.ProductId == id).FirstOrDefault();
-            db.PRODUCTDESCRIPTIONs.Remove(pRODUCTDESCRIPTION);
-            db.PRODUCTs.Remove(pRODUCT);
+            PRODUCT product = db.PRODUCTs.Find(id);
+            PRODUCTDESCRIPTION productDescrption = db.PRODUCTDESCRIPTIONs.Where(d => d.ProductId == id).FirstOrDefault();
+            if(productDescrption != null)
+            {
+                db.PRODUCTDESCRIPTIONs.Remove(productDescrption);
+            }
+            if (product != null)
+            {
+                db.PRODUCTs.Remove(product);
+            }
+
+            
             while (true)
             {
-                PRODUCTPICTURE pRODUCTPICTURE = db.PRODUCTPICTUREs.Where(d => d.ProductId == id).FirstOrDefault();
-                if(pRODUCTPICTURE is null)
+                PRODUCTPICTURE productPicture = db.PRODUCTPICTUREs.Where(d => d.ProductId == id).FirstOrDefault();
+                if(productPicture is null)
                 {
                     break;
                 }
-                db.PRODUCTPICTUREs.Remove(pRODUCTPICTURE);
+                db.PRODUCTPICTUREs.Remove(productPicture);
                 db.SaveChanges();
             }
             db.SaveChanges();

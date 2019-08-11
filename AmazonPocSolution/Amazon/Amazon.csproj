@@ -270,9 +270,9 @@
     <Content Include="Views\AdminHome\AddPicture.cshtml" />
     <Content Include="Views\AdminHome\ChangePassword.cshtml" />
     <Content Include="Views\AdminProductView\Delete.cshtml" />
-    <Content Include="Views\AdminProductView\Details.cshtml" />
     <Content Include="Views\AdminProductView\Edit.cshtml" />
     <Content Include="Views\AdminProductView\Index.cshtml" />
+    <Content Include="Views\AdminProductView\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
