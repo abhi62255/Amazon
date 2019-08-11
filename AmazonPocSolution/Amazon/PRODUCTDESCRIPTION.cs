@@ -11,26 +11,15 @@ namespace Amazon
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PRODUCTDESCRIPTION
     {
         public long DescriptionId { get; set; }
         public long ProductId { get; set; }
-
-        [Required]
         public string ProductCategory { get; set; }
-
-        [Required] 
         public string ProductGenderType { get; set; }
-
-        [Required]
         public string ProductBrand { get; set; }
-
-        [Required]
         public string ProductSubCategory { get; set; }
-
-        [Required]
         public string ProductDescription1 { get; set; }
     
         public virtual PRODUCT PRODUCT { get; set; }

@@ -153,11 +153,7 @@ namespace Amazon.Controllers
                     ViewBag.message = "Wrong Old Password";
                     return View();
                 }
-
-                //_db.ADMINs.Add(model);
-                //_db.SaveChanges();
-                //return RedirectToAction("Index", "AdminHome");
-                return Content("changed");
+                
             }
             return View(model);
         }

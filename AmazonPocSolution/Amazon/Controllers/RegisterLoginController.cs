@@ -66,6 +66,7 @@ namespace Amazon.Controllers
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(user.Name, false);
+                    Session["CustomerID"] = user.CustomerId;
                     return RedirectToAction("Index", "Home");
                 }
                 else

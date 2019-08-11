@@ -373,18 +373,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PRODUCTPICTURE_PRODUCT">
-    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
-    <End Role="PRODUCTPICTURE" Type="Self.PRODUCTPICTURE" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PRODUCT">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="PRODUCTPICTURE">
-        <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SEARCHHISTORY_CUSTOMER">
     <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
     <End Role="SEARCHISTORY" Type="Self.SEARCHISTORY" Multiplicity="*" />
@@ -527,10 +515,6 @@
     <AssociationSet Name="FK_PRODUCTDESCRIPTION_PRODUCT" Association="Self.FK_PRODUCTDESCRIPTION_PRODUCT">
       <End Role="PRODUCT" EntitySet="PRODUCT" />
       <End Role="PRODUCTDESCRIPTION" EntitySet="PRODUCTDESCRIPTION" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PRODUCTPICTURE_PRODUCT" Association="Self.FK_PRODUCTPICTURE_PRODUCT">
-      <End Role="PRODUCT" EntitySet="PRODUCT" />
-      <End Role="PRODUCTPICTURE" EntitySet="PRODUCTPICTURE" />
     </AssociationSet>
     <AssociationSet Name="FK_SEARCHHISTORY_CUSTOMER" Association="Self.FK_SEARCHHISTORY_CUSTOMER">
       <End Role="CUSTOMER" EntitySet="CUSTOMER" />

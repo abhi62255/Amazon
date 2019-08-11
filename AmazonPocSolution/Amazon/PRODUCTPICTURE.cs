@@ -11,14 +11,11 @@ namespace Amazon
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PRODUCTPICTURE
     {
         public long PictureId { get; set; }
         public long ProductId { get; set; }
-
-        [Required]
         public string PicturePath { get; set; }
     
         public virtual PRODUCT PRODUCT { get; set; }

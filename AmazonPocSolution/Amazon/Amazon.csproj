@@ -138,6 +138,7 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdminHomeController.cs" />
+    <Compile Include="Controllers\AdminProductViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterLoginController.cs" />
     <Compile Include="CUSTOMER.cs">
@@ -268,6 +269,10 @@
     <Content Include="Views\AdminHome\AddDescription.cshtml" />
     <Content Include="Views\AdminHome\AddPicture.cshtml" />
     <Content Include="Views\AdminHome\ChangePassword.cshtml" />
+    <Content Include="Views\AdminProductView\Delete.cshtml" />
+    <Content Include="Views\AdminProductView\Details.cshtml" />
+    <Content Include="Views\AdminProductView\Edit.cshtml" />
+    <Content Include="Views\AdminProductView\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

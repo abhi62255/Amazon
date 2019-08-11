@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Amazon.Models
 {
+    [NotMapped]
     public partial class Password
     {
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="XKARTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="XKARTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ADDRESS">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -378,18 +378,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PRODUCTPICTURE_PRODUCT">
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
-          <End Role="PRODUCTPICTURE" Type="Self.PRODUCTPICTURE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCT">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="PRODUCTPICTURE">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SEARCHHISTORY_CUSTOMER">
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
           <End Role="SEARCHISTORY" Type="Self.SEARCHISTORY" Multiplicity="*" />
@@ -533,10 +521,6 @@
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="PRODUCTDESCRIPTION" EntitySet="PRODUCTDESCRIPTION" />
           </AssociationSet>
-          <AssociationSet Name="FK_PRODUCTPICTURE_PRODUCT" Association="Self.FK_PRODUCTPICTURE_PRODUCT">
-            <End Role="PRODUCT" EntitySet="PRODUCT" />
-            <End Role="PRODUCTPICTURE" EntitySet="PRODUCTPICTURE" />
-          </AssociationSet>
           <AssociationSet Name="FK_SEARCHHISTORY_CUSTOMER" Association="Self.FK_SEARCHHISTORY_CUSTOMER">
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
             <End Role="SEARCHISTORY" EntitySet="SEARCHISTORY" />
@@ -558,8 +542,7 @@
             <End Role="WISHLIST" EntitySet="WISHLIST" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="XKARTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

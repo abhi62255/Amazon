@@ -28,6 +28,7 @@ namespace Amazon
             this.PRODUCTs = new HashSet<PRODUCT>();
         }
 
+
         public long CustomerId { get; set; }
 
         [Required]

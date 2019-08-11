@@ -28,10 +28,11 @@
                     <li>@Html.ActionLink("Home", "Index", "AdminHome")</li>
                     <li>@Html.ActionLink("Add Seller", "AddAddress", "AdminHome")</li>
                     <li>@Html.ActionLink("Add Product", "AddProduct", "AdminHome")</li>
+                    <li>@Html.ActionLink("View Product", "Index", "AdminProductView")</li>
 
                 </ul>
                 <ul class="nav navbar-right">
-                    <span style="color : white "><li>@Html.ActionLink(" Welcome " + @User.Identity.Name, "ChangePassword", "AdminHome")</li></span>
+                    <li><span style="color : white ">@Html.ActionLink(" Welcome " + @User.Identity.Name, "ChangePassword", "AdminHome")</span></li>
                     <li>@Html.ActionLink("LogOut", "LogOut", "RegisterLogin")</li>
                 </ul>
             </div>

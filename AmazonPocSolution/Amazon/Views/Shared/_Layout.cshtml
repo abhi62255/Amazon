@@ -32,7 +32,7 @@
                     }
                     else
                     {
-                        <span style="color : white "><li>@Html.ActionLink(" Welcome " + @User.Identity.Name, "ChangePassword", "AdminHome")</li></span>
+                        <span style="color : white "><li>@Html.ActionLink(" Welcome " + @User.Identity.Name, "Index", "Home")</li></span>
                         <li>@Html.ActionLink("LogOut", "LogOut", "RegisterLogin")</li>
                     }
                 </ul>
