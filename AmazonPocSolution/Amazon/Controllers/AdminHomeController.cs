@@ -13,9 +13,8 @@ namespace Amazon.Controllers
     {
         XKARTEntities _db = new XKARTEntities();
         // GET: AdminHome
-        public ActionResult Index()
+       public ActionResult Index()
         {
-            //ViewBag.countrydrop = _db.CITies.Select(x => new SelectListItem { Text = x.City1, Value = x.CityId.ToString() }).ToList();
             return View();
         }
 

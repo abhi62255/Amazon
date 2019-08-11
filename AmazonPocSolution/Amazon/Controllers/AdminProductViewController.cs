@@ -10,6 +10,7 @@ using Amazon;
 
 namespace Amazon.Controllers
 {
+    [Authorize(Users = "admin_123456")]
     public class AdminProductViewController : Controller
     {
         private XKARTEntities db = new XKARTEntities();
