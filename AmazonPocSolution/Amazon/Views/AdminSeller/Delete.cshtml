@@ -1,0 +1,40 @@
+﻿@model Amazon.SELLER
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SELLER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SellerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS.AddressLine1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS.AddressLine1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

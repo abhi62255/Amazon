@@ -81,12 +81,8 @@ namespace Amazon.Controllers
             {
                 db.PRODUCTDESCRIPTIONs.Remove(productDescrption);
             }
-            if (product != null)
-            {
-                db.PRODUCTs.Remove(product);
-            }
-
-            
+            db.PRODUCTs.Remove(product);
+         
             while (true)
             {
                 PRODUCTPICTURE productPicture = db.PRODUCTPICTUREs.Where(d => d.ProductId == id).FirstOrDefault();
