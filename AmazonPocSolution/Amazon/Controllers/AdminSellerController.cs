@@ -16,9 +16,10 @@ namespace Amazon.Controllers
         private XKARTEntities db = new XKARTEntities();
 
         // GET: AdminSeller
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm = null)
         {
-            var sELLERs = db.SELLERs.Include(s => s.ADDRESS);
+            var sELLERs = db.SELLERs.Where(p => searchTerm == null || p.SellerName.StartsWith(searchTerm))
+                .Include(s => s.ADDRESS);
             return View(sELLERs.ToList());
         }
 

@@ -3,7 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
+<hr />
+<form method="get">
+    <input type="search" name="searchTerm" />
+    <input type="submit" name="Search By Name" />
 
+</form>
+<hr />
 <table class="table">
     <tr>
         <th>
@@ -15,19 +21,20 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SellerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ADDRESS.AddressLine1)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SellerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SellerId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDRESS.AddressLine1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SellerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SellerId })
+            </td>
+        </tr>
+    }
 
 </table>
