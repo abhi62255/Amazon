@@ -6,14 +6,13 @@
     ViewBag.Seller = _db.SELLERs.Select(x => new SelectListItem { Text = x.SellerName, Value = x.SellerId.ToString() }).ToList();
 }
 
-<h2>AddProduct</h2>
+<h2>Add Product</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>PRODUCT</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

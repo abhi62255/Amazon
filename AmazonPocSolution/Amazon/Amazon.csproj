@@ -138,6 +138,7 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdminHomeController.cs" />
+    <Compile Include="Controllers\AdminProductTrendController.cs" />
     <Compile Include="Controllers\AdminProductViewController.cs" />
     <Compile Include="Controllers\AdminSellerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -278,6 +279,10 @@
     <Content Include="Views\AdminSeller\Edit.cshtml" />
     <Content Include="Views\AdminSeller\Index.cshtml" />
     <Content Include="Views\AdminSeller\_ViewStart.cshtml" />
+    <Content Include="Views\AdminProductTrend\Create.cshtml" />
+    <Content Include="Views\AdminProductTrend\Delete.cshtml" />
+    <Content Include="Views\AdminProductTrend\Index.cshtml" />
+    <Content Include="Views\AdminProductTrend\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

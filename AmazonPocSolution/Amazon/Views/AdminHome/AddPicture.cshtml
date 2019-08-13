@@ -4,14 +4,13 @@
     ViewBag.Title = "AddPicture";
 }
 
-<h2>AddPicture</h2>
+<h2>Add Product Picture</h2>
 
 @using (Html.BeginForm(new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>PRODUCTPICTURE</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 

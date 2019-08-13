@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Amazon.TREND>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<hr />
+<p>
+    <button class="btn btn-default">@Html.ActionLink("Create New", "Create")</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCT.ProductName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODUCT.ProductName)
+        </td>
+        <td>
+            <button class="btn btn-default"> @Html.ActionLink("Delete", "Delete", new { id = item.TrendId })</button>
+        </td>
+    </tr>
+}
+
+</table>
